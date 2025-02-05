@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Quicksand, Bungee_Outline } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 
+
+/*
+  Quicksand -> use it for infos and minor texts
+*/
+export const quicksand = Quicksand({
+  weight : ["400"],
+  variable: "--font-quicksand",
+  subsets: ["latin"],
+})
+
+
+/*
+  Bungee_Outline -> use it for titles and punchlines
+*/
+
+export const bungeeOutline = Bungee_Outline({
+  weight : ["400"],
+  variable: "--font-bungee-outline",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
