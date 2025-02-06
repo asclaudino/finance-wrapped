@@ -1,50 +1,36 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Quicksand, Bungee_Outline } from "next/font/google";
-import "./globals.css";
-import { AntdRegistry } from '@ant-design/nextjs-registry';
+"use client"; // Ensure it's a client component
+
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import './globals.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
 
 
-/*
-  Quicksand -> use it for infos and minor texts
-*/
-export const quicksand = Quicksand({
-  weight : ["400"],
-  variable: "--font-quicksand",
-  subsets: ["latin"],
-})
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-
-/*
-  Bungee_Outline -> use it for titles and punchlines
-*/
-
-export const bungeeOutline = Bungee_Outline({
-  weight : ["400"],
-  variable: "--font-bungee-outline",
-  subsets: ["latin"],
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Financial Wrapped",
-  description: "Financial Wrapped",
-};
-
-const RootLayout = ({ children }: React.PropsWithChildren) => (
-  <html lang="en">
-    <body>
-      <AntdRegistry>{children}</AntdRegistry>
-    </body>
-  </html>
-);
-
-export default RootLayout;
+  return (
+    <html lang="en">
+      <body>
+        <AnimatePresence mode="wait" initial={false}>
+          {isMounted && (
+            <motion.div
+              key={pathname}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              {children}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </body>
+    </html>
+  );
+}
