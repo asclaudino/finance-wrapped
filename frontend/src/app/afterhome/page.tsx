@@ -4,6 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { quicksand, bungeeOutline } from "../page";
 import { useParams } from "next/navigation";
+import '../globals.css';
+
 
 
 export default function AfterHome() {
@@ -15,7 +17,7 @@ export default function AfterHome() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ type: 'tween', duration: 0.8, ease: "easeInOut" }}
               >
-                  <h1>This is your 2024 financial wrapped!</h1>  
+                  <h1>This is your <span className="text-accent">  2024 financial wrapped!</span></h1>  
               </motion.div>
               
         </div>
