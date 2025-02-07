@@ -1,6 +1,26 @@
-from fastapi import FastAPI
+import sys
+sys.dont_write_bytecode = True # prevents __pycache__ folders
+
+from database import Base, engine  
+import models
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from database import SessionLocal
+from models import Category
+from schemas import CategoryCreate, CategoryResponse
+
+
 
 app = FastAPI()
+
+def create_tables():
+    print("Ensuring database tables exist...")
+    Base.metadata.create_all(bind=engine)
+
+# Run table creation on startup
+@app.on_event("startup")
+async def startup_event():
+    create_tables()
 
 
 @app.get("/")
