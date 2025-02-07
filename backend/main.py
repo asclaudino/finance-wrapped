@@ -1,6 +1,7 @@
 import sys
 sys.dont_write_bytecode = True # prevents __pycache__ folders
 
+from routes import category, transactions
 from database import Base, engine  
 import models
 from fastapi import FastAPI, Depends, HTTPException
@@ -22,6 +23,8 @@ def create_tables():
 async def startup_event():
     create_tables()
 
+app.include_router(category.router)
+app.include_router(transactions.router)
 
 @app.get("/")
 async def root():
