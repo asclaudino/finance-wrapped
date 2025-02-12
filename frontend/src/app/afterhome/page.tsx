@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { quicksand, bungeeOutline } from "../page";
 import { useParams } from "next/navigation";
 import '../globals.css';
+import NavigationButton from '../../../components/ui/NavigationButton';
+
 
 
 
@@ -19,6 +21,17 @@ export default function AfterHome() {
               >
                   <h1>This is your </h1>
                   <h1 className="text-accent">2024 financial wrapped!</h1>  
+              </motion.div>
+              <motion.div
+                    initial={{ opacity: 0, x: 300, y:300}}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ type: 'tween', duration: 1.2, ease: "easeInOut" }}
+              >
+                  <NavigationButton
+                    nextPage="/about"          // Redirects to the /about page when clicked
+                    size='small'               // Button size
+                    text="Ready to discover"         // Custom button text
+                  />
               </motion.div>
               
         </div>
