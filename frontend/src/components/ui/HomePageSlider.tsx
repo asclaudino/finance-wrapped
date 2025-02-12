@@ -37,7 +37,7 @@ export default function AntdSliderComponent({ onChange }: SliderProps) {
       setRedirecting(true);
       setTimeout(() => {
         router.push("/afterhome");
-      }, 500); // Allows exit animation to play before redirecting
+      }, 100); // Allows exit animation to play before redirecting
     }
   };
 
