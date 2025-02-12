@@ -1,5 +1,6 @@
 import sys
-sys.dont_write_bytecode = True # prevents __pycache__ folders
+sys.dont_write_bytecode = True # prevents __pycache__ foldersnpm run dev 
+
 
 from routes import category, transactions
 from database import Base, engine  
