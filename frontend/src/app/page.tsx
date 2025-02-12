@@ -1,5 +1,6 @@
 'use client';
 
+import '@ant-design/v5-patch-for-react-19'; // added the patch for compatibility
 import React from 'react';
 import { useParams } from "next/navigation";
 import { Button } from 'antd';

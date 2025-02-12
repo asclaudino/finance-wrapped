@@ -3,16 +3,19 @@
 
 import React from 'react';
 import { Button } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import { RightCircleFilled } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
+import { quicksand, bungeeOutline } from "../../src/app/page";
+
 
 
 const NavigationButton = ({
   nextPage = '/next',       // URL of the next page
   size = 'large',           // Button size; options: 'small', 'middle', or 'large'
-  color = '#f5d108',        // Button background and border color
-  text = 'Next Page',       // Button label text
-  icon = <ArrowRightOutlined /> // Icon component; default is an arrow icon
+  color = '#171717',  
+  bordercolor = '#f5d108' ,     // Button background and border color
+  text = '',       // Button label text
+  icon = <RightCircleFilled />// Icon component; default is an arrow icon
 }) => {
   const router = useRouter();
 
@@ -23,13 +26,12 @@ const NavigationButton = ({
   return (
     <div style={{
       position: 'fixed',
-      right: '20px',
-      bottom: '20px',
       zIndex: 1000 // ensures the button is always on top
     }}>
       <Button
         type="primary"
-        style={{ backgroundColor: color, borderColor: color }}
+        style={{ backgroundColor: color, borderColor: bordercolor, fontFamily: bungeeOutline.className}}
+        size = 'large'
         onClick={handleClick}
         icon={icon}
       >
