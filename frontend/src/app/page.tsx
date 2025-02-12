@@ -5,7 +5,7 @@ import React from 'react';
 import { useParams } from "next/navigation";
 import { Button } from 'antd';
 import Image from "next/image";
-import HomePageSliderWrapper from '../../components/ui/HomePageSliderWrapper'; 
+import HomePageSliderWrapper from '../components/ui/HomePageSliderWrapper'; 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Quicksand, Bungee_Outline } from "next/font/google";
 import "./globals.css";

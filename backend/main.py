@@ -2,14 +2,15 @@ import sys
 sys.dont_write_bytecode = True # prevents __pycache__ foldersnpm run dev 
 
 
-from routes import category, transactions
+from routes import category, transactions, summary
 from database import Base, engine  
 import models
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from models import Category
-from schemas import CategoryCreate, CategoryResponse
+from schemas import CategoryCreate, CategoryResponse, SummaryResponse
 
 
 
@@ -26,6 +27,15 @@ async def startup_event():
 
 app.include_router(category.router)
 app.include_router(transactions.router)
+app.include_router(summary.router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 async def root():

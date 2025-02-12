@@ -5,7 +5,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { RightCircleFilled } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
-import { quicksand, bungeeOutline } from "../../src/app/page";
+import { quicksand, bungeeOutline } from "../../app/page";
 
 
 

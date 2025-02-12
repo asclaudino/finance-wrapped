@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { quicksand, bungeeOutline } from "../page";
 import { useParams } from "next/navigation";
 import '../globals.css';
-import NavigationButton from '../../../components/ui/NavigationButton';
+import NavigationButton from '../../components/ui/NavigationButton';
 
 
 
