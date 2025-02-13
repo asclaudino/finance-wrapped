@@ -2,7 +2,7 @@ import sys
 sys.dont_write_bytecode = True # prevents __pycache__ foldersnpm run dev 
 
 
-from routes import category, transactions, summary
+from routes import category, transactions, summary, savings
 from database import Base, engine  
 import models
 from fastapi import FastAPI, Depends, HTTPException
@@ -28,6 +28,8 @@ async def startup_event():
 app.include_router(category.router)
 app.include_router(transactions.router)
 app.include_router(summary.router)
+app.include_router(savings.router)
+
 
 app.add_middleware(
     CORSMiddleware,
