@@ -4,7 +4,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from datetime import datetime
-from models import Transaction
+from models import Transaction, Savings
 from schemas import SummaryResponse
 
 router = APIRouter()
@@ -19,8 +19,11 @@ def get_db():
 @router.get("/summary/{year}", response_model=SummaryResponse)
 def get_summary(year: int, db: Session = Depends(get_db)):
     # Calculate the total spent by summing up the 'amount' field in transactions for the given year
-    total = db.query(func.sum(Transaction.amount)) \
+    total_spent = db.query(func.sum(Transaction.amount)) \
               .filter(Transaction.year == year) \
               .scalar() or 0.0
-              
-    return SummaryResponse(total_spent=total)
+    total_saved = db.query(func.sum(Savings.value)) \
+                    .filter(Savings.year == year) \
+                    .scalar() or 0.0
+
+    return SummaryResponse(total_spent=total_spent, total_saved=total_saved)

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, condecimal
 
 class SavingsBase(BaseModel):
     year: int
@@ -6,7 +6,7 @@ class SavingsBase(BaseModel):
     day: int
     hour: int
     minutes: int
-    value: float
+    value: condecimal(max_digits=10, decimal_places=2)
 
 class SavingsCreate(SavingsBase):
     """
@@ -18,4 +18,4 @@ class SavingsRead(SavingsBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True

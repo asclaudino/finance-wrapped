@@ -13,5 +13,5 @@ class Savings(Base):
     day = Column(Integer, nullable=False)
     hour = Column(Integer, nullable=False)
     minutes = Column(Integer, nullable=False)
-    amount = Column(Numeric(10, 2), nullable=False)
+    value = Column(Numeric(10, 2), nullable=False)
     created_at = Column(TIMESTAMP(timezone=True), server_default=text('now()'))
