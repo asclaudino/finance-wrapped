@@ -2,7 +2,7 @@ import sys
 sys.dont_write_bytecode = True # prevents __pycache__ foldersnpm run dev 
 
 
-from routes import category, transactions, summary, savings
+from routes import category, transactions, summary, savings, trends
 from database import Base, engine  
 import models
 from fastapi import FastAPI, Depends, HTTPException
@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from models import Category
-from schemas import CategoryCreate, CategoryResponse, SummaryResponse
+from schemas import CategoryCreate, CategoryResponse, SummaryResponse, TrendResponse
 
 
 
@@ -29,7 +29,7 @@ app.include_router(category.router)
 app.include_router(transactions.router)
 app.include_router(summary.router)
 app.include_router(savings.router)
-
+app.include_router(trends.router)
 
 app.add_middleware(
     CORSMiddleware,

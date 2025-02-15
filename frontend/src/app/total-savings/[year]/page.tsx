@@ -1,5 +1,6 @@
 import TotalSavingsClient from '../../../components/TotalSavingsClient';
 import { fetchSummary } from '../../../actions/summary';
+import NavigationButton from '@/components/ui/NavigationButton';
 
 export default async function TotalSavingsPage({
   params,
@@ -11,5 +12,16 @@ export default async function TotalSavingsPage({
   const { year } = resolvedParams;
   const summary = await fetchSummary(year);
 
-  return <TotalSavingsClient year={year} initialSummary={summary} />;
+  return (
+    <div>
+      <TotalSavingsClient year={year} initialSummary={summary} />
+      <NavigationButton
+        nextPage="/total-savings/2024"  
+        size="large"
+        isAlreadyAnimated = {true}
+      />
+    </div>
+  );
+
+  
 }
