@@ -1,15 +1,32 @@
 // src/actions/summary.js
 
+const cache = {};
+
+/**
+ * Fetches summary data for a given year and caches the result.
+ * If data for the specified year is already cached, returns the cached data.
+ *
+ * @param {string} year - The year for which to fetch summary data.
+ * @returns {Promise<Object>} - The summary data.
+ */
+
 export async function fetchSummary(year) {
-    // Use the BACKEND_URL from your environment (or fallback)
-    const backendUrl = process.env.BACKEND_URL || 'http://0.0.0.0:5000';
-    const response = await fetch(`${backendUrl}/summary/${year}`, {
-      // Disable caching to always fetch fresh data (optional)
-      cache: 'no-store'
-    });
-    if (!response.ok) {
-      throw new Error(`Failed to fetch summary: ${response.status}`);
-    }
-    return response.json();
+
+  if (cache[year]) {
+    return cache[year];
   }
-  
+
+  // Use the BACKEND_URL from your environment (or fallback)
+  const backendUrl = process.env.BACKEND_URL || 'http://0.0.0.0:5000';
+  const response = await fetch(`${backendUrl}/summary/${year}`, {
+    cache: 'no-store'
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch summary: ${response.status}`);
+  }
+
+  const data = await response.json();
+  cache[year] = data;
+  return data;
+}

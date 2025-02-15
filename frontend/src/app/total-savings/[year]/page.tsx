@@ -16,7 +16,7 @@ export default async function TotalSavingsPage({
     <div>
       <TotalSavingsClient year={year} initialSummary={summary} />
       <NavigationButton
-        nextPage="/total-savings/2024"  
+        nextPage="/monthly-breakdown/2024"  
         size="large"
         isAlreadyAnimated = {true}
       />
