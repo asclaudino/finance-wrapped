@@ -19,7 +19,7 @@ export default async function TrendAnalysisPage({
       <TopMerchantsClient year={year} initialMerchants={initialMerchants} />
       <div className='mt-10'>
         <NavigationButton
-          nextPage="/trend-analysis/2024"
+          nextPage="/biggest-saving/2024"
           size="large"
           isAlreadyAnimated={true}
         />
