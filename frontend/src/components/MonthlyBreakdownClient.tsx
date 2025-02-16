@@ -69,11 +69,13 @@ const TrendAnalysisClient: React.FC<TrendAnalysisClientProps> = ({
       className={`${sourGummy.className} relative h-screen w-full flex flex-col items-center justify-center gap-8 p-4`}
       sx={{ maxWidth: 800, mx: 'auto' }}
     >
+      <h1 className={`${sourGummy.className} text-[var(--accent-color)] text-4xl font-bold pb-2`}>Slide into</h1>
       <Typography
         variant="h4"
         component="h1"
         sx={{ color: 'var(--accent)' }} 
         fontFamily={sourGummy.className}
+        fontStyle={sourGummy.className}
       >
         Highest spendings 
       </Typography>
