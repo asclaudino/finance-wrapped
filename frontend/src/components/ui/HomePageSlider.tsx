@@ -43,10 +43,10 @@ export default function AntdSliderComponent({ onChange }: SliderProps) {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <h1 className="text-[var(--background-color)] text-2xl font-bold">Slide into</h1>
-      <h1 className="text-[var(--background-color)] text-2xl font-bold">Your 2024</h1>
-      <h1 className="text-[var(--background-color)] text-2xl font-bold">financial</h1>
-      <h1 className="text-[var(--background-color)] text-2xl font-bold p-10px" style={{marginBottom: "20px"}}>journey</h1>
+      <h1 className="text-[var(--background-color)] text-4xl font-bold pb-2">Slide into</h1>
+      <h1 className="text-[var(--background-color)] text-4xl font-bold pb-2">Your 2024</h1>
+      <h1 className="text-[var(--background-color)] text-4xl font-bold pb-2">financial</h1>
+      <h1 className="text-[var(--background-color)] text-4xl font-bold p-10px" style={{marginBottom: "20px"}}>journey</h1>
 
       {/* Ant Design Slider inside a custom rounded background */}
       <motion.div variants={shakeVariants} animate="shake">

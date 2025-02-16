@@ -7,7 +7,7 @@ import { Button } from 'antd';
 import Image from "next/image";
 import HomePageSliderWrapper from '../components/ui/HomePageSliderWrapper'; 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Quicksand, Bungee_Outline } from "next/font/google";
+import { Geist, Geist_Mono, Quicksand, Bungee_Outline, Sour_Gummy } from "next/font/google";
 import "./globals.css";
 import { motion } from 'framer-motion';
 import { metadata } from './metadata';
@@ -18,6 +18,12 @@ import { metadata } from './metadata';
   Quicksand -> use it for infos and minor texts
 */
 export const quicksand = Quicksand({
+  weight : ["400"],
+  variable: "--font-quicksand",
+  subsets: ["latin"],
+})
+
+export const sourGummy = Sour_Gummy({ 
   weight : ["400"],
   variable: "--font-quicksand",
   subsets: ["latin"],
@@ -50,7 +56,7 @@ export default function Home() {
   const params = useParams();
 
   return (
-  <div className={`${bungeeOutline.className} relative h-screen w-full flex flex-col items-center justify-center `}>  
+  <div className={`${sourGummy.className} relative h-screen w-full flex flex-col items-center justify-center `}>  
     <div className="relative z-10 text-primary text-3xl md:text-5xl font-bold text-center">
       <motion.div
         initial={{ opacity: 0, x: 100 }}

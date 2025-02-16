@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { quicksand, bungeeOutline } from "../app/page";
+import { quicksand, bungeeOutline, sourGummy } from "../app/page";
 import "../app/globals.css";
 
 export default function TotalSpendingsClient({ year, initialSummary }) {
@@ -11,7 +11,7 @@ export default function TotalSpendingsClient({ year, initialSummary }) {
 
   return (
     <div
-      className={`${bungeeOutline.className} relative h-screen w-full flex flex-col items-center justify-center gap-8 p-4`}
+      className={`${sourGummy.className} relative h-screen w-full flex flex-col items-center justify-center gap-8 p-4`}
     >
       {/* Row 1: Two columns */}
       <div className="flex flex-row items-center justify-center w-full gap-4">

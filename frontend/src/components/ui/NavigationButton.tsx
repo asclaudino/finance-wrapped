@@ -1,22 +1,19 @@
 "use client";
 
-
 import React from 'react';
 import { Button } from 'antd';
 import { RightCircleFilled } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
-import { quicksand, bungeeOutline } from "../../app/page";
+import { quicksand } from "../../app/page"; // assuming quicksand is an imported font style
 import { motion } from 'framer-motion';
-
-
 
 const NavigationButton = ({
   nextPage = '/next',       // URL of the next page
   size = 'large',           // Button size; options: 'small', 'middle', or 'large'
   color = '#171717',  
-  bordercolor = '#f5d108' ,     // Button background and border color
-  text = '',       // Button label text
-  icon = <RightCircleFilled />,// Icon component; default is an arrow icon
+  bordercolor = '#f5d108',  // Button background and border color
+  text = '',                // Button label text
+  icon = <RightCircleFilled />, // Icon component; default is an arrow icon
   isAlreadyAnimated = false
 }) => {
   const router = useRouter();
@@ -24,46 +21,52 @@ const NavigationButton = ({
   const handleClick = () => {
     router.push(nextPage);
   };
-  if (isAlreadyAnimated){
+
+
+  if (isAlreadyAnimated) {
     return (
       <motion.div
-        initial={{ opacity: 0, x: "0vw", y: "0vh" }}
-        animate={{ opacity: 1, x: "65vw", y: "-30vh" }}
+        style={{
+          position: 'fixed',
+          bottom: '15%', // adjust as needed
+          right: '10%',  // adjust as needed
+          zIndex: 1000    // ensures the button is always on top
+        }}
+        initial={{ opacity: 0, translateY: 50 }}  // Start slightly below its final position
+        animate={{ opacity: 1, translateY: 0 }}     // Animate into view
         transition={{ type: "tween", duration: 1.2, ease: "easeInOut" }}
       >
-        <div style={{
-          position: 'fixed',
-          zIndex: 1000 // ensures the button is always on top
-        }}>
-          <Button
-            type="primary"
-            style={{ backgroundColor: color, borderColor: bordercolor, fontFamily: bungeeOutline.className}}
-            size = 'large'
-            onClick={handleClick}
-            icon={icon}
-          >
-            {text}
-          </Button>
-        </div>
+        <Button
+          type="primary"
+          style={{ backgroundColor: color, borderColor: bordercolor, fontFamily: quicksand.className }}
+          size='large'
+          onClick={handleClick}
+          icon={icon}
+        >
+          {text}
+        </Button>
       </motion.div>
-    )
+    );
+  } else {
+    return (
+      <div style={{
+        position: 'fixed',
+        bottom: '10%', // adjust as needed
+        right: '80%',  // adjust as needed
+        zIndex: 1000    // ensures the button is always on top
+      }}>
+        <Button
+          type="primary"
+          style={{ backgroundColor: color, borderColor: bordercolor, fontFamily: quicksand.className }}
+          size='large'
+          onClick={handleClick}
+          icon={icon}
+        >
+          {text}
+        </Button>
+      </div>
+    );
   }
-  else return (
-    <div style={{
-      position: 'fixed',
-      zIndex: 1000 // ensures the button is always on top
-    }}>
-      <Button
-        type="primary"
-        style={{ backgroundColor: color, borderColor: bordercolor, fontFamily: bungeeOutline.className}}
-        size = 'large'
-        onClick={handleClick}
-        icon={icon}
-      >
-        {text}
-      </Button>
-    </div>
-  );
 };
 
 export default NavigationButton;
