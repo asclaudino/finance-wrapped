@@ -1,4 +1,4 @@
-import BiggestSavingClient from '../../../components/BiggestSavingClient';
+import FinancialProfileClient from '../../../components/FinancialProfileClient';
 import { fetchSummary } from '../../../actions/summary';
 import NavigationButton from '@/components/ui/NavigationButton';
 import { fetchTrends } from '@/actions/trends';
@@ -16,12 +16,12 @@ export default async function BiggestSavingPage({
 
   return (
     <div>
-      <BiggestSavingClient year={year} initialTrends={trends} />
-      <NavigationButton
-        nextPage="/financial-profile/2024"  
+      <FinancialProfileClient year={year} initialTrends={trends} />
+      {/* <NavigationButton
+        nextPage="/monthly-breakdown/2024"  
         size="large"
         isAlreadyAnimated = {true}
-      />
+      /> */}
     </div>
   );
 

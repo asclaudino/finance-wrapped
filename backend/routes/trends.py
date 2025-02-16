@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from models import Transaction, Savings  
 from database import SessionLocal      
-from schemas import TrendResponse, TrendData
+from schemas import TrendResponse, TrendData, FinancialProfile
 
 router = APIRouter()
 
@@ -35,4 +35,34 @@ def get_trends(year: int, db: Session = Depends(get_db)):
     )
     top_savings = [TrendData(month=month, total=total) for month, total in savings_query]
 
-    return TrendResponse(top_expenses=top_expenses, top_savings=top_savings)
+    total_expenses = db.query(func.sum(Transaction.amount)).filter(Transaction.year == year).scalar() or 0
+    total_savings = db.query(func.sum(Savings.value)).filter(Savings.year == year).scalar() or 0
+
+    if total_savings == 0:
+        raise HTTPException(status_code=400, detail="Total savings is zero, unable to compute financial profile.")
+
+    ratio = total_expenses / total_savings
+
+    if ratio < 0.5:
+        profile_name = "The Natural Investor"
+        description = ("You don’t spend – you strategically reallocate capital!")
+    elif ratio < 1.0:
+        profile_name = "The Planner"
+        description = ("If money were a game, you’d be in the final level with a 100% completion rate!")
+    elif ratio < 1.5:
+        profile_name = "The Balanced One"
+        description = ("he secret to your success? Living for today without forgetting about tomorrow!")
+    elif ratio < 2.0:
+        profile_name = "The Financial Adventurer"
+        description = ("Why worry about financial planning when there’s cashback, installments, and travel miles?")
+    else:
+        profile_name = "The Financial Free Spirit "
+        description = ("Money comes, money goes… in the end, everything works out, right?")
+
+    financial_profile = FinancialProfile(name=profile_name, description=description)
+
+    return TrendResponse(
+        top_expenses=top_expenses,
+        top_savings=top_savings,
+        financial_profile=financial_profile
+    )
