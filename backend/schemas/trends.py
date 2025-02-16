@@ -8,6 +8,7 @@ class TrendData(BaseModel):
 class FinancialProfile(BaseModel):
     name: str
     description: str
+    spotify_link: str
 
 class TrendResponse(BaseModel):
     top_expenses: List[TrendData]

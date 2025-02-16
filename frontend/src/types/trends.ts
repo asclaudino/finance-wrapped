@@ -6,6 +6,7 @@ export interface TrendItem {
 export interface FinancialProfile {
   name: string;
   description: string;
+  spotify_link: string;
 }
 
 export interface TrendResponse {

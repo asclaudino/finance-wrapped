@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { sourGummy } from "../app/page";
 import "../app/globals.css";
 import { TrendResponse } from "@/types/trends";
+import { Spotify } from "react-spotify-embed";
 
 interface FinancialProfileClientProps {
   year: string;
@@ -15,7 +16,7 @@ const FinancialProfileClient: React.FC<FinancialProfileClientProps> = ({
   year, 
   initialTrends,
 }) => {
-    console.log(initialTrends)
+  console.log(initialTrends);
   return (
     <div className={`${sourGummy.className} relative h-screen w-full flex flex-col items-center justify-center gap-8 p-4`}>
       {/* Header Section */}
@@ -43,6 +44,10 @@ const FinancialProfileClient: React.FC<FinancialProfileClientProps> = ({
         <p className="mt-4 text-lg text-center text-secondary whitespace-pre-line">
           {initialTrends.financial_profile.description}
         </p>
+        {/* Spotify Embed using the react-spotify-embed component */}
+        <div className="mt-4 flex justify-center">
+          <Spotify link={initialTrends.financial_profile.spotify_link} />
+        </div>
       </motion.div>
     </div>
   );
