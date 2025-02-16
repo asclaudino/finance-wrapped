@@ -2,7 +2,7 @@ import sys
 sys.dont_write_bytecode = True # prevents __pycache__ foldersnpm run dev 
 
 
-from routes import category, transactions, summary, savings, trends
+from routes import category, transactions, summary, savings, trends, merchants
 from database import Base, engine  
 import models
 from fastapi import FastAPI, Depends, HTTPException
@@ -30,6 +30,7 @@ app.include_router(transactions.router)
 app.include_router(summary.router)
 app.include_router(savings.router)
 app.include_router(trends.router)
+app.include_router(merchants.router)
 
 app.add_middleware(
     CORSMiddleware,
