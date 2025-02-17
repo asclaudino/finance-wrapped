@@ -1,21 +1,21 @@
 # Finance Wrapped
 
-Finance Wrapped is a humble, full‑stack financial application developed as a project for an internship interview. It combines a FastAPI‑driven backend with a Next.js‑powered frontend to deliver a responsive financial dashboard with smooth animations and a creative Spotify integration.
+Finance Wrapped is a full‑stack financial application developed as a project for an internship interview. It combines a FastAPI‑driven/PostgreSQL backend with a Next.js‑powered frontend to deliver a responsive financial dashboard with smooth animations and a creative Spotify integration.
 
 ---
 
 ## Overview & Architecture
 
-This project is a modest yet fully integrated solution where the backend and frontend work in harmony to deliver real‑time financial data and a unique user experience. Built with FastAPI for the backend and Next.js for the frontend, Finance Wrapped exemplifies:
+This project is a modest yet fully integrated solution where the backend and frontend work together to deliver financial data and a unique user experience. Built with FastAPI for the backend and Next.js for the frontend, Finance Wrapped exemplifies:
 
 - **Backend & Data Integration**:  
-  The backend, powered by FastAPI, serves financial data via a RESTful API. Data is populated using a CSV generator script, which simulates and tests various financial scenarios. The backend runs on a Python virtual environment (venv) to ensure dependency isolation and stability.
+  The backend, powered by FastAPI, serves financial data via a RESTful API. Data is populated using a CSV generator script, which generates random financial transactions/savings. The backend runs on a Python virtual environment (venv) to ensure dependency isolation and stability.
 
 - **Frontend**:  
-  The frontend is built with Next.js and styled using modern CSS frameworks. It features intuitive animations for a smooth user experience and integrates a Spotify component to pull in music data, adding an innovative twist to financial insights.
+  The frontend is built with Next.js. It features intuitive animations with framer-motion package for a smooth user experience and integrates a Spotify component to pull in music data, adding an innovative twist to financial insights.
 
 - **Overall Integration**:  
-  Both parts communicate via clean, well‑documented RESTful endpoints. The project’s architecture is straightforward, clean, and designed to demonstrate the ability to learn and implement new technologies quickly.
+  Both parts communicate via RESTful endpoints. 
 
 ---
 
@@ -23,8 +23,8 @@ This project is a modest yet fully integrated solution where the backend and fro
 
 ### Prerequisites
 
-- **Backend**: Python 3.8+ (using a virtual environment)
-- **Frontend**: Node.js and npm
+- **Backend**:  Python 3.8+ (using a virtual environment)
+- **Frontend**: Next.js
 
 ### Setup & Installation
 
@@ -40,11 +40,12 @@ This project is a modest yet fully integrated solution where the backend and fro
      ```
    - Populate the backend database using the CSV generator script:
      ```bash
-     python backend/scripts/csv_generator.py
+      python generate_savings.py -n 500 -o savings.csv
+      python generate_transactions.py -n 500 -o transactions.csv
      ```
    - Start the FastAPI server:
      ```bash
-     uvicorn backend.main:app --reload
+     make start
      ```
 
 2. **Frontend Setup**:
@@ -60,10 +61,6 @@ This project is a modest yet fully integrated solution where the backend and fro
      ```bash
      npm run dev
      ```
-
-3. **Configuration**:
-   - Ensure that environment variables (e.g., for Spotify API credentials) are set in a `.env` file for both the backend and frontend as needed.
-
 ---
 
 ## Future Enhancements
