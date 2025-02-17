@@ -1,5 +1,9 @@
 # Finance Wrapped
 
+
+![image](https://github.com/user-attachments/assets/5d88aebb-6b15-4e0d-8a7b-353869e267e3)
+
+
 Finance Wrapped is a full‑stack financial application developed as a project for an internship interview. It combines a FastAPI‑driven/PostgreSQL backend with a Next.js‑powered frontend to deliver a responsive financial dashboard with smooth animations and a creative Spotify integration.
 
 ---
