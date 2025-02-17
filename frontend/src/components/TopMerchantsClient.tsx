@@ -71,14 +71,15 @@ const TopMerchantsClient: React.FC<TopMerchantsClientProps> = ({
             style={{ width: '100%', textAlign: 'center' }}
             className="whitespace-pre-line"
           >
-            <Typography
-              variant="h5"
-              component="p"
-              sx={{ color: 'var(--primary)' }}
-              fontFamily={sourGummy.className}
-            >
-              Your money took different paths throughout the year.{"\n"}Let's find out where it went!
-            </Typography>
+            <div className={`${sourGummy.className} flex items-center justify-center min-h-screen`}>
+              <div className="bg-black p-8 rounded-lg shadow-lg">
+                <p className="text-accent text-center text-xl">
+                  Your money took different paths throughout the year.<br /><br />
+                  Let's find out where it went!
+                </p>
+              </div>
+            </div>
+
           </motion.div>
         ) : (
           <motion.div
@@ -88,15 +89,14 @@ const TopMerchantsClient: React.FC<TopMerchantsClientProps> = ({
             transition={{ duration: 0.8 }}
             style={{ width: '100%' }}
           >
-            <Typography
-              variant="h4"
-              component="h1"
-              sx={{ color: 'var(--accent)' }}
-              fontFamily={sourGummy.className}
-              className={`${sourGummy.className} pl-6 pb-4`}
-            >
-              Top Spent Categories
-            </Typography>
+            <div className={`${sourGummy.className} pl-10`}>
+              <div className="pl-8 rounded-lg shadow-lg">
+                <h1 className="text-accent pl-6 pb-4 text-4xl">
+                  Top Spent Categories
+                </h1>
+              </div>
+            </div>
+
             {/* <Typography
               variant="h4"
               component="h1"

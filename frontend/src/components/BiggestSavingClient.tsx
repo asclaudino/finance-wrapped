@@ -41,17 +41,23 @@ const BiggestSavingClient: React.FC<BiggestSavingClientProps> = ({ year, initial
       <AnimatePresence>
         {showIntro ? (
           <motion.div
-            key="intro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-xl text-primary font-bold font-large text-center whitespace-pre-line"
+          key="intro"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, x: "-100vw" }}
+          transition={{ duration: 0.8 }}
+          className="text-xl text-primary font-bold font-large text-center whitespace-pre-line"
           >
-            <p>
-              There was one month where you truly shined at saving.{"\n"}Want to know which one?
-            </p>
+            <div className={`${sourGummy.className} flex items-center justify-center min-h-screen`}>
+              <div className="bg-black p-8 rounded-lg shadow-lg">
+                <p className="text-accent text-center text-xl">
+                  There was one month where you truly shined at saving.<br /><br />
+                  Want to know which one?
+                </p>
+              </div>
+            </div>
           </motion.div>
+        
         ) : (
           <>
             {/* Row 1: Two columns with header text */}

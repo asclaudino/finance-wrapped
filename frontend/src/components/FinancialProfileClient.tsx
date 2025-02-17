@@ -30,17 +30,23 @@ const FinancialProfileClient: React.FC<FinancialProfileClientProps> = ({
       <AnimatePresence>
         {showIntro ? (
           <motion.div
-            key="intro"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-xl text-primary font-bold text-center whitespace-pre-line"
+          key="intro"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, x: "-100vw" }}
+          transition={{ duration: 0.8 }}
+          className="text-xl text-primary font-bold text-center whitespace-pre-line"
           >
-            <p>
-              Your financial year had its ups and downs, but your unique approach to money always stood out.{"\n"}Let's see what your profile is!
-            </p>
+            <div className={`${sourGummy.className} flex items-center justify-center min-h-screen`}>
+              <div className="bg-black p-8 rounded-lg shadow-lg">
+                <p className="text-accent text-center text-xl">
+                  Your financial year had its ups and downs, but your unique approach to money always stood out.<br /><br />
+                  Let's see what your profile is!
+                </p>
+              </div>
+            </div>
           </motion.div>
+        
         ) : (
           <motion.div
             key="content"

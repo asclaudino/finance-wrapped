@@ -30,9 +30,17 @@ export default function TotalSavingsClient({ year, initialSummary }) {
             transition={{ duration: 0.8 }}
             className="text-xl text-primary font-bold font-large text-center whitespace-pre-line"
           >
-            <p>
-            Saving money isn't just about numbers— {"\n"} it's about creating opportunities for the future. {"\n"} See the impact of your savings!
-            </p>
+              <div
+                className={`${sourGummy.className} flex items-center justify-center min-h-screen `}
+              >
+                <div className="bg-black p-8 rounded-lg shadow-lg">
+                  <p className="text-accent text-center text-xl">
+                    Saving money isn't just about numbers— <br /><br />
+                    it's about creating opportunities for the future. <br /><br />
+                    See the impact of your savings!
+                  </p>
+                </div>
+              </div>     
           </motion.div>
         ) : (
           <motion.div

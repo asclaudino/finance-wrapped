@@ -30,9 +30,16 @@ export default function TotalSpendingsClient({ year, initialSummary }) {
             transition={{ duration: 0.8 }}
             className="text-xl text-primary font-bold font-large text-center whitespace-pre-line"
           >
-            <p>
-              Every financial choice told a story this year.{"\n"}Let's see how you allocated your resources?
-            </p>
+              <div
+                className={`${sourGummy.className} flex items-center justify-center min-h-screen`}
+              >
+                <div className="bg-black p-8 rounded-lg shadow-lg">
+                  <p className="text-accent text-center text-xl">
+                    Every financial choice told a story this year.<br /><br />
+                    Let's see how you allocated your resources?
+                  </p>
+                </div>
+              </div>
           </motion.div>
         ) : (
           <motion.div

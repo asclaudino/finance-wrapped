@@ -85,14 +85,15 @@ const TrendAnalysisClient: React.FC<TrendAnalysisClientProps> = ({
             transition={{ duration: 0.8 }}
             className="w-full text-center whitespace-pre-line"
           >
-            <Typography
-              variant="h5"
-              component="p"
-              sx={{ color: 'var(--primary)' }}
-              fontFamily={sourGummy.className}
-            >
-              Every expense leaves its mark.{"\n"}Let's uncover the months that defined your spending this year!
-            </Typography>
+            <div className={`${sourGummy.className} flex items-center justify-center min-h-screen`}>
+              <div className="bg-black p-8 rounded-lg shadow-lg">
+                <p className="text-accent text-center text-xl">
+                  Every expense leaves its mark.<br /><br />
+                  Let's uncover the months that defined your spending this year!
+                </p>
+              </div>
+            </div>
+
           </motion.div>
         ) : (
           <motion.div
@@ -102,18 +103,17 @@ const TrendAnalysisClient: React.FC<TrendAnalysisClientProps> = ({
             transition={{ duration: 0.8 }}
             className="w-full"
           >
-            <h1 className={`${sourGummy.className} text-[var(--accent-color)] text-4xl font-bold pb-2`}>
+            <h1 className={`${sourGummy.className} text-[var(--accent-color)] text-4xl font-bold `}>
               Slide into
             </h1>
-            <Typography
-              variant="h4"
-              component="h1"
-              sx={{ color: 'var(--accent)' }}
-              fontFamily={sourGummy.className}
-              className={`${sourGummy.className} text-center  pb-4`}
-            >
-              Highest monthly spendings
-            </Typography>
+            <div className={`${sourGummy.className} `}>
+              <div className="rounded-lg shadow-lg">
+                <h1 className="text-accent text-center text-4xl">
+                  Highest monthly spendings
+                </h1>
+              </div>
+            </div>
+
             {/* <Typography
               variant="h4"
               component="h1"
