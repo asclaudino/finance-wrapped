@@ -16,7 +16,7 @@ def get_db():
 
 @router.get("/trend-analysis/{year}", response_model=TrendResponse)
 def get_trends(year: int, db: Session = Depends(get_db)):
-    # Get top 6 months by total expenses
+
     expenses_query = (
         db.query(Transaction.month, func.sum(Transaction.amount).label("total"))
           .filter(Transaction.year == year)
@@ -26,7 +26,7 @@ def get_trends(year: int, db: Session = Depends(get_db)):
     )
     top_expenses = [TrendData(month=month, total=total) for month, total in expenses_query]
 
-    # Get top 6 months by total savings
+
     savings_query = (
         db.query(Savings.month, func.sum(Savings.value).label("total"))
           .filter(Savings.year == year)
@@ -36,11 +36,11 @@ def get_trends(year: int, db: Session = Depends(get_db)):
     )
     top_savings = [TrendData(month=month, total=total) for month, total in savings_query]
 
-    # Calculate overall totals for the year
+
     total_expenses = db.query(func.sum(Transaction.amount)).filter(Transaction.year == year).scalar() or 0
     total_savings = db.query(func.sum(Savings.value)).filter(Savings.year == year).scalar() or 0
 
-    # Prevent division by zero if no savings exist
+
     if total_savings == 0:
         raise HTTPException(status_code=400, detail="Total savings is zero, unable to compute financial profile.")
 

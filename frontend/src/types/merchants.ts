@@ -1,4 +1,3 @@
-// types/merchants.ts
 
 export interface MerchantData {
     category: string;

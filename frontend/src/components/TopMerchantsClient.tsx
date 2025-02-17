@@ -49,7 +49,6 @@ const TopMerchantsClient: React.FC<TopMerchantsClientProps> = ({
     return () => clearTimeout(timer);
   }, []);
 
-  // Prepare data for the BarChart using top merchant categories
   const data = initialMerchants.top_merchants.map((item) => ({
     name: item.category,
     value: item.total,

@@ -55,26 +55,26 @@ const FinancialProfileClient: React.FC<FinancialProfileClientProps> = ({
             transition={{ type: "tween", duration: 0.8, ease: "easeInOut" }}
             className=" p-6 rounded-lg shadow-lg max-w-lg"
           >
-            {/* Header Section */}
+          
             <div className="flex flex-row items-center justify-center w-full gap-4">
               <div className="flex flex-col gap-2">
                 <p className="text-3xl text-accent font-bold pb-5">YOUR FINANCIAL PROFILE</p>
               </div>
             </div>
 
-            {/* Subheader */}
+          
             <div className="text-xl text-primary font-bold text-center pb-5">
               <p>Your {year} financial profile is:</p>
             </div>
             <div className="bg-yellow-200 p-6 rounded-lg shadow-lg max-w-lg">
-                {/* Financial Profile Display */}
+               
                 <h1 className="text-3xl md:text-5xl font-bold text-center text-secondary">
                   {initialTrends.financial_profile.name}
                 </h1>
                 <p className="mt-4 text-lg text-center text-secondary whitespace-pre-line">
                   {initialTrends.financial_profile.description}
                 </p>
-                {/* Spotify Embed */}
+                
                 <div className="mt-4 flex justify-center">
                   <Spotify link={initialTrends.financial_profile.spotify_link} />
                 </div>

@@ -48,7 +48,7 @@ export default function AntdSliderComponent({ onChange }: SliderProps) {
       <h1 className="text-[var(--background-color)] text-4xl font-bold pb-2">financial</h1>
       <h1 className="text-[var(--background-color)] text-4xl font-bold p-10px" style={{marginBottom: "20px"}}>journey</h1>
 
-      {/* Ant Design Slider inside a custom rounded background */}
+      
       <motion.div variants={shakeVariants} animate="shake">
         <div 
         className="relative w-full max-w-3xl h-12 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full flex items-center justify-center shadow-lg p-2"
@@ -60,7 +60,7 @@ export default function AntdSliderComponent({ onChange }: SliderProps) {
             max={100}
             onChange={handleSliderChange}
             style={{ width: "90%"}}
-            tooltip={{ open: false }} // Show tooltip
+            tooltip={{ open: false }} 
             trackStyle={{ backgroundColor: "#f5d108", borderColor: "#f5d108"}}
             handleStyle={{ backgroundColor: "#f5d108", borderColor: "#f5d108"}}
           />

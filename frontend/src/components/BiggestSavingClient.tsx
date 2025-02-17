@@ -60,19 +60,19 @@ const BiggestSavingClient: React.FC<BiggestSavingClientProps> = ({ year, initial
         
         ) : (
           <>
-            {/* Row 1: Two columns with header text */}
+           
             <div className="flex flex-row items-center justify-center w-full gap-4">
               <div className="flex flex-col gap-2">
                 <p className="text-3xl text-accent font-bold font-large">HIGHEST SAVINGS MONTH</p>
               </div>
             </div>
 
-            {/* Row 2: A single text above the data */}
+          
             <div className="text-xl text-primary font-bold font-large text-center">
               <p>Your {year} top saving month was</p>
             </div>
 
-            {/* Row 3: Data in a solid, rounded background */}
+           
             <motion.div
               key="content"
               initial={{ opacity: 0, x: 100 }}

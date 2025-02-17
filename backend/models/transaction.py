@@ -13,7 +13,6 @@ class Transaction(Base):
     year = Column(Integer, nullable=False)
     time = Column(Time, nullable=False)
     
-    # Foreign key to Category model
     category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
 
     # Relationship with Category

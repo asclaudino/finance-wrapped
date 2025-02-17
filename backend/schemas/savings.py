@@ -9,9 +9,6 @@ class SavingsBase(BaseModel):
     value: condecimal(max_digits=10, decimal_places=2)
 
 class SavingsCreate(SavingsBase):
-    """
-    Use this schema when creating a new Savings entry.
-    """
     pass
 
 class SavingsRead(SavingsBase):

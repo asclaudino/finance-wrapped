@@ -55,7 +55,7 @@ const TrendAnalysisClient: React.FC<TrendAnalysisClientProps> = ({
   year,
   initialTrends,
 }) => {
-  // Prepare data for the BarChart using top expense months
+
   const data = initialTrends.top_expenses.map((item) => ({
     name: monthNames[item.month] || `Month ${item.month}`,
     value: item.total,
