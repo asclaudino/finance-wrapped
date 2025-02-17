@@ -16,7 +16,7 @@ def get_db():
 @router.post("/transactions/", response_model=TransactionResponse)
 def create_transaction(transaction: TransactionCreate, db: Session = Depends(get_db)):
     """Creates a new transaction in the database."""
-    # Ensure category exists
+
     category = db.query(Category).filter(Category.id == transaction.category_id).first()
     if not category:
         raise HTTPException(status_code=404, detail="Category not found")
