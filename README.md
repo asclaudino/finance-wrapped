@@ -27,11 +27,6 @@ This project is a modest yet fully integrated solution where the backend and fro
 
 ## Getting Started
 
-### Prerequisites
-
-- **Backend**:  Python 3.8+
-- **Frontend**: Next.js
-
 ### Setup & Installation
 
 1. **Backend Setup**:
