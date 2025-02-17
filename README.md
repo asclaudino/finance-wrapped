@@ -66,10 +66,10 @@ This project is a modest yet fully integrated solution where the backend and fro
 ## Future Enhancements
 
 Although Finance Wrapped is a modest project built for an internship interview, there are plenty of opportunities for further development:
-- **Expanded Testing**: Implement additional unit and integration tests.
-- **Performance Optimization**: Further optimize API responses and bundle sizes.
-- **Security Enhancements**: Introduce features like rate limiting and improved authentication.
-- **Feature Expansion**: Add more financial analytics, data visualizations, and third‑party integrations.
+
+- **Enhance Page Transition Animations**: Further refine and polish the transitions between pages to provide an even smoother and more engaging user experience.
+- **Add More Data Analysis**: Expand the financial data analysis features to offer deeper insights and more comprehensive visualizations.
+- **Enhance Overall Designs**: Improve the overall aesthetic and usability of the application, ensuring a cohesive and modern design across all interfaces.
 
 ---
 
@@ -79,4 +79,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Finance Wrapped is a testament to my journey in mastering new technologies during an internship interview. I welcome your feedback and contributions—feel free to open an issue or submit a pull request with suggestions and improvements!
+I welcome your feedback and contributions—feel free to open an issue or submit a pull request with suggestions and improvements!
