@@ -1,6 +1,6 @@
 // src/actions/summary.js
 
-const cache = {};
+// const cache = {};
 
 /**
  * Fetches summary data for a given year and caches the result.
@@ -12,21 +12,23 @@ const cache = {};
 
 export async function fetchSummary(year) {
 
-  if (cache[year]) {
-    return cache[year];
-  }
+  // if (cache[year]) {
+  //   return cache[year];
+  // }
 
   // Use the BACKEND_URL from your environment (or fallback)
-  const backendUrl = process.env.BACKEND_URL || 'http://0.0.0.0:5000';
-  const response = await fetch(`${backendUrl}/summary/${year}`, {
-    cache: 'no-store'
-  });
+  const backendUrl = process.env.BACKEND_URL || 'http://127.0.0.1:8000';
+  // const response = await fetch(`${backendUrl}/summary/${year}`, {
+  //   cache: 'no-store'
+  // });
+
+  const response = await fetch(`${backendUrl}/summary/${year}`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch summary: ${response.status}`);
   }
 
   const data = await response.json();
-  cache[year] = data;
+  // cache[year] = data;
   return data;
 }

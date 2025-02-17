@@ -17,6 +17,7 @@ const NavigationButton = ({
   isAlreadyAnimated = false,
   animationDelay = 0        // Optional delay in milliseconds before the animation starts
 }) => {
+  
   const router = useRouter();
 
   const handleClick = () => {

@@ -14,7 +14,7 @@ export async function fetchTopMerchants(year) {
   }
 
   // Use the BACKEND_URL from your environment (or fallback)
-  const backendUrl = process.env.BACKEND_URL || 'http://0.0.0.0:5000';
+  const backendUrl = process.env.BACKEND_URL || 'http://127.0.0.1:8000';
   const response = await fetch(`${backendUrl}/top-merchants/${year}`, {
     cache: 'no-store'
   });

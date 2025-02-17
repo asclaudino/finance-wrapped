@@ -23,16 +23,11 @@ export default function AfterHome() {
                   <h1 className="text-accent pb-5">2024 financial wrapped!</h1>  
                   <h1> Let's dive into it!</h1>
               </motion.div>
-              <motion.div
-                    initial={{ opacity: 0, x: "0vw", y: "0vh"}}
-                    animate={{ opacity: 1, x: "65vw", y: "20vh" }}
-                    transition={{ type: 'tween', duration: 1.2, ease: "easeInOut" }}
-              >
-                  <NavigationButton
-                    nextPage="/total-spendings/2024"          // Redirects to the total-spendings/2024 page when clicked
-                    size='large'               // Button size
-                  />
-              </motion.div>
+              <NavigationButton
+                nextPage="/total-spendings/2024"          // Redirects to the total-spendings/2024 page when clicked
+                size='large'               // Button size
+                isAlreadyAnimated = {true}
+              />
               
         </div>
       </div>
