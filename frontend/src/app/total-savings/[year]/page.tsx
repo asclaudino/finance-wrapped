@@ -19,6 +19,7 @@ export default async function TotalSavingsPage({
         nextPage="/monthly-breakdown/2024"  
         size="large"
         isAlreadyAnimated = {true}
+        animationDelay={6000}
       />
     </div>
   );

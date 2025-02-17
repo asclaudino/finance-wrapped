@@ -22,6 +22,7 @@ export default async function TrendAnalysisPage({
           nextPage="/biggest-saving/2024"
           size="large"
           isAlreadyAnimated={true}
+          animationDelay={6000}
         />
       </div>
     </div>

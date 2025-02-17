@@ -21,6 +21,7 @@ export default async function BiggestSavingPage({
         nextPage="/financial-profile/2024"  
         size="large"
         isAlreadyAnimated = {true}
+        animationDelay={6000}
       />
     </div>
   );

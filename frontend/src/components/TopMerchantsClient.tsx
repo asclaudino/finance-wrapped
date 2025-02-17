@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import {
   ResponsiveContainer,
@@ -13,6 +13,7 @@ import {
 } from 'recharts';
 import { TopMerchantsResponse } from '@/types/merchants';
 import { quicksand, sourGummy } from '@/app/page';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface TopMerchantsClientProps {
   year: string;
@@ -39,6 +40,15 @@ const TopMerchantsClient: React.FC<TopMerchantsClientProps> = ({
   year,
   initialMerchants,
 }) => {
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 5000); // Show the intro for 5 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
   // Prepare data for the BarChart using top merchant categories
   const data = initialMerchants.top_merchants.map((item) => ({
     name: item.category,
@@ -50,48 +60,80 @@ const TopMerchantsClient: React.FC<TopMerchantsClientProps> = ({
       className={`${sourGummy.className} relative h-screen w-full flex flex-col items-center justify-center gap-8 p-4`}
       sx={{ maxWidth: 800, mx: 'auto' }}
     >
-      <Typography
-        variant="h4"
-        component="h1"
-        sx={{ color: 'var(--accent)' }}
-        fontFamily={sourGummy.className}
-      >
-        Top Merchant Categories
-      </Typography>
-      <Typography
-        variant="h4"
-        component="h1"
-        gutterBottom
-        sx={{ color: 'var(--accent)' }}
-        fontFamily={sourGummy.className}
-      >
-        for {year}
-      </Typography>
-      <ResponsiveContainer width="100%" height={400}>
-        <BarChart
-          data={data}
-          layout="vertical"
-          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-        >
-          <XAxis
-            type="number"
-            tick={{ fill: 'var(--accent)', fontSize: 14 }}
-          />
-          <YAxis
-            dataKey="name"
-            type="category"
-            tick={{ fill: 'var(--accent)', fontSize: 14 }}
-          />
-          <Tooltip />
-          <Bar
-            dataKey="value"
-            fill="var(--primary)"
-            radius={[10, 10, 10, 10]}
+      <AnimatePresence>
+        {showIntro ? (
+          <motion.div
+            key="intro"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{ width: '100%', textAlign: 'center' }}
+            className="whitespace-pre-line"
           >
-            <LabelList content={renderCustomBarLabel} />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+            <Typography
+              variant="h5"
+              component="p"
+              sx={{ color: 'var(--primary)' }}
+              fontFamily={sourGummy.className}
+            >
+              Your money took different paths throughout the year.{"\n"}Let's find out where it went!
+            </Typography>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{ width: '100%' }}
+          >
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ color: 'var(--accent)' }}
+              fontFamily={sourGummy.className}
+              className={`${sourGummy.className} pl-6 pb-4`}
+            >
+              Top Spent Categories
+            </Typography>
+            {/* <Typography
+              variant="h4"
+              component="h1"
+              gutterBottom
+              sx={{ color: 'var(--accent)' }}
+              fontFamily={sourGummy.className}
+            >
+              in your {year}
+            </Typography> */}
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart
+                data={data}
+                layout="vertical"
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <XAxis
+                  type="number"
+                  tick={{ fill: 'var(--accent)', fontSize: 14 }}
+                />
+                <YAxis
+                  dataKey="name"
+                  type="category"
+                  tick={{ fill: 'var(--accent)', fontSize: 14 }}
+                />
+                <Tooltip />
+                <Bar
+                  dataKey="value"
+                  fill="var(--primary)"
+                  radius={[10, 10, 10, 10]}
+                >
+                  <LabelList content={renderCustomBarLabel} />
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Box>
   );
 };
